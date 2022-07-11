@@ -1,0 +1,7 @@
+{
+  "name": "tarea-8",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
