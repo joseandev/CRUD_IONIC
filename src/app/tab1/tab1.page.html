@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title class="ion-text-center">
+      Diario
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-title class="ion-text-center" style="margin: 20px 0;">(Click al titulo)</ion-title>
+
+  <div style="height: 80vh; overflow: auto" *ngFor="let entrada of Entradas; index as i" style="margin-left: 15px;">
+    
+    <div style="display: flex; flex-direction: row;">
+      <div style="flex-grow: 3;">
+        <p  (click)="show(i)" style=" margin: 5px;">{{ entrada.Titulo }} <br> {{ entrada.Fecha }}</p>
+      </div>
+      <div style="flex-grow: 1; flex-direction: column;">
+        <ion-button color="danger" (click)="delete(entrada['id'])" ><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </div>
+    </div>
+    <div *ngIf="bool[i]">
+      <textarea style="width: 100%" rows="10">{{ entrada.Descripcion }}</textarea>
+      <img src="{{ entrada.Img }}" alt="">
+    </div>
+  </div>
+  <ion-button style="display: block;" color="danger" (click)="deleteAll()" class="ion-text-center">Delete All</ion-button>
 </ion-content>

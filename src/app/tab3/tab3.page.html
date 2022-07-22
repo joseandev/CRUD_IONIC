@@ -1,17 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Nuevo/Editar entrada
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label position="floating">Titulo</ion-label>
+    <ion-input [(ngModel)]="Titulo"></ion-input>
+  </ion-item>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-item>
+    <ion-textarea [(ngModel)]="Descripcion" rows="8" cols="20" placeholder="Plasme sus ideas y sentimientos..."></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Agregue una imagen</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-input (change)="cargarImagen($event)" [(ngModel)]="imgName" type="file" accept="image/*"></ion-input>
+  </ion-item>
+
+  <img src="{{ srcImg }}" alt="">
+
+  <ion-button style="display: block;" color="success" (click)="agregar()" class="ion-text-center">Agregar</ion-button>
 </ion-content>
